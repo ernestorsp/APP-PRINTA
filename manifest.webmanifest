@@ -2,15 +2,16 @@
   "name": "PRINTA",
   "short_name": "PRINTA",
   "start_url": "./",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#f5f6fb",
   "theme_color": "#7c3aed",
   "icons": [
     {
-      "src": "printa-logo.svg?v=1",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "src": "./printa-logo.png?v=4",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
     }
   ]
 }
