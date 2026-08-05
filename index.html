@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+  <meta name="theme-color" content="#7c3aed">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="PRINTA">
+  <meta name="application-name" content="PRINTA">
+  <link rel="icon" type="image/svg+xml" sizes="512x512" href="printa-logo.svg?v=1">
+  <link rel="shortcut icon" href="printa-logo.svg?v=1">
+  <link rel="apple-touch-icon" href="printa-logo.svg?v=1">
+  <link rel="manifest" href="manifest.webmanifest">
+  <title>PRINTA</title>
+  <style>
+    html,body{width:100%;height:100%;margin:0;overflow:hidden;background:#f5f6fb}
+    iframe{display:block;width:100%;height:100%;border:0;background:#f5f6fb;opacity:0;transition:opacity .25s ease}
+    iframe.ready{opacity:1}
+    .splash{position:fixed;inset:0;z-index:10;display:grid;place-items:center;background:linear-gradient(145deg,#6d28d9,#ff2f92);transition:opacity .3s ease,visibility .3s ease}
+    .splash.hide{opacity:0;visibility:hidden}
+    .splashBox{text-align:center;color:#fff;font-family:Arial,sans-serif}
+    .splashLogo{width:132px;height:132px;object-fit:contain;border-radius:28px;filter:drop-shadow(0 16px 30px #3d155c66)}
+    .splash h1{margin:20px 0 8px;font-size:28px}
+    .splash p{margin:0 0 18px;opacity:.88}
+    .spinner{width:34px;height:34px;margin:auto;border:4px solid #ffffff55;border-top-color:#fff;border-radius:50%;animation:spin .8s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .fallback{position:fixed;inset:auto 16px 16px;z-index:2;text-align:center;font:14px Arial,sans-serif}
+    .fallback a{color:#6d28d9}
+  </style>
+</head>
+<body>
+  <div id="splash" class="splash" role="status" aria-live="polite">
+    <div class="splashBox">
+      <img class="splashLogo" src="printa-logo.svg?v=1" alt="PRINTA">
+      <h1>PRINTA</h1>
+      <p>Abriendo órdenes y finanzas…</p>
+      <div class="spinner" aria-hidden="true"></div>
+    </div>
+  </div>
+  <iframe
+    src="about:blank"
+    title="PRINTA"
+    allow="camera; clipboard-read; clipboard-write"
+  ></iframe>
+  <script>
+    const SCRIPT_URL='https://script.google.com/macros/s/AKfycbxPF-C2SROClvaV51EwvnJg3RwIcCONA9N4lnMaT26RPnNgkvTsLMIL3Zo8ygqUTFs/exec';
+    const appFrame=document.querySelector('iframe');
+    appFrame.src=SCRIPT_URL+(window.location.search||'');
+    appFrame.addEventListener('load',()=>{
+      appFrame.classList.add('ready');
+      document.getElementById('splash').classList.add('hide');
+    });
+    setTimeout(()=>{
+      appFrame.classList.add('ready');
+      document.getElementById('splash').classList.add('hide');
+    },20000);
+  </script>
+  <noscript class="fallback">
+    <a href="https://script.google.com/macros/s/AKfycbxPF-C2SROClvaV51EwvnJg3RwIcCONA9N4lnMaT26RPnNgkvTsLMIL3Zo8ygqUTFs/exec">Abrir PRINTA</a>
+  </noscript>
+</body>
+</html>
